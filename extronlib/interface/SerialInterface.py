@@ -1,37 +1,43 @@
 class SerialInterface():
     """ This class provides an interface to a serial port. This class allows the user to send data over the serial port in a synchronous or asynchronous manner. This class is used for all ports capable of serial communication (e.g., Serial Ports, IR Serial Ports).
 
-        >Note:
-        > In synchronous mode, the user will use SendAndWait() to wait for the response.
-        > In asynchronous mode, the user will assign a handler function to ReceiveData to handle responses.
-        > If an IR/Serial port is passed in and it has already been instantiated as an IRInterface, an exception will be raised.
+    Note:
+        - In synchronous mode, the user will use SendAndWait() to wait for the response.
+        - In asynchronous mode, the user will assign a handler function to ReceiveData to handle responses.
+        - If an IR/Serial port is passed in and it has already been instantiated as an IRInterface, an exception will be raised.
+
+    ---
 
     Arguments:
-     Host (extronlib.device) - handle to Extron device class that instantiated this interface class
-     Port (string) - port name (e.g.  'COM1', 'IRS1')
-     (optional) Baud (int) - baudrate
-     (optional) Data (int) - number of data bits
-     (optional) Parity (string) - 'None', 'Odd' or 'Even'
-     (optional) Stop (int) - number of stop bits
-     (optional) FlowControl (string) - 'HW', 'SW', or 'Off'
-     (optional) CharDelay (float) - time between each character sent to the connected device
-     (optional) Mode (string) - mode of the port, 'RS232', 'RS422' or 'RS485'
+        - Host (extronlib.device) - handle to Extron device class that instantiated this interface class
+        - Port (string) - port name (e.g.  'COM1', 'IRS1')
+        - (optional) Baud (int) - baudrate
+        - (optional) Data (int) - number of data bits
+        - (optional) Parity (string) - 'None', 'Odd' or 'Even'
+        - (optional) Stop (int) - number of stop bits
+        - (optional) FlowControl (string) - 'HW', 'SW', or 'Off'
+        - (optional) CharDelay (float) - time between each character sent to the connected device
+        - (optional) Mode (string) - mode of the port, 'RS232', 'RS422' or 'RS485'
+    
+    ---
 
     Parameters:
-    Baud - Returns (int) - the baud rate
-    CharDelay - Returns (float) - inter-character delay
-    Data - Returns (int) - the number of data bits
-    FlowControl - Returns (string) - flow control
-    Host - Returns (extronlib.device) - the host device
-    Mode - Returns (string) - the current Mode
-    Parity - Returns (string) - parity
-    Port - Returns (string) - the port name this interface is attached to
-    Stop - Returns (int) - number of stop bits
+        - Baud - Returns (int) - the baud rate
+        - CharDelay - Returns (float) - inter-character delay
+        - Data - Returns (int) - the number of data bits
+        - FlowControl - Returns (string) - flow control
+        - Host - Returns (extronlib.device) - the host device
+        - Mode - Returns (string) - the current Mode
+        - Parity - Returns (string) - parity
+        - Port - Returns (string) - the port name this interface is attached to
+        - Stop - Returns (int) - number of stop bits
+    
+    ---
 
     Events:
-    Offline - (Event) Triggers when port goes offline. The callback takes two arguments. The first one is the extronlib.interface instance triggering the event and the second one is a string ('Offline').
-    Online - (Event) Triggers when port goes offline. The callback takes two arguments. The first one is the extronlib.interface instance triggering the event and the second one is a string ('Online'). 
-    ReceiveData - (Event) Receive Data event handler used for asynchronous transactions. The callback takes two arguments. The first one is the SerialInterface instance triggering the event and the second one is a bytes string.
+        - Offline - (Event) Triggers when port goes offline. The callback takes two arguments. The first one is the extronlib.interface instance triggering the event and the second one is a string ('Offline').
+        - Online - (Event) Triggers when port goes offline. The callback takes two arguments. The first one is the extronlib.interface instance triggering the event and the second one is a string ('Online'). 
+        - ReceiveData - (Event) Receive Data event handler used for asynchronous transactions. The callback takes two arguments. The first one is the SerialInterface instance triggering the event and the second one is a bytes string.
     """
     Host = None
     Port = ''

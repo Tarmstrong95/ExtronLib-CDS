@@ -7,15 +7,21 @@ class Timer():
     
     In addition to being used as a decorator, Timer can be named and modified.
     
+    ---
+
     Arguments:
         - Interval (float) - How often to call the handler in seconds (minimum interval is 0.1s).
         - Function (function) - Handler function to execute each Interval.
+    
+    ---
 
     Parameters:
         - Count - Returns (int) - Number of events triggered by this timer.
         - Function - Returns (function) - Handler function to execute each Interval. Function must accept exactly two parameters, which are the Timer that called it and the Count.
         - Interval - Returns (float) - How often to call the handler in seconds.
         - State - Returns (string) - Current state of Timer ('Running', 'Paused', 'Stopped')
+    
+    ---
 
     Events:
         - StateChanged - (Event) Triggers when the timer state changes. The callback takes two arguments. The first is the Timer instance triggering the event and the second is a string ('Running', 'Paused', 'Stopped').

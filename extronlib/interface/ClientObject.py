@@ -7,6 +7,8 @@ class ClientObject():
     Note: 
         - This class cannot be instantiated by the programmer. It is only created by the `EthernetServerInterfaceEx` object.
 
+    ---
+    
     Parameters:
         - Hostname - Returns (string) - Hostname DNS name of the connection. Can be the IP Address
         - IPAddress - Returns (string) - the IP Address of the connected device

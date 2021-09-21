@@ -3,10 +3,14 @@ import device
 
 class Label():
     """ Label object displays text string on the screen
+    
+    ---
 
     Arguments:
         - UIHost (extronlib.device.UIDevice) - Device object hosting this UIObject
         - ID (int,string) - ID or Name of the UIObject
+    
+    ---
     
     Parameters:
         - Host - Returns (extronlib.device.UIDevice) - UIDevice object that hosts this control object

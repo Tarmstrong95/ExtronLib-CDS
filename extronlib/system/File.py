@@ -5,6 +5,8 @@ class File():
     """ Access to files located in user area. These files are stored in a location that can be accessed using 3rd party SFTP clients.
     
     Note: File class accesses user area with ‘admin’ privileges.
+    
+    ---
 
     Arguments:
         - Filename (string) - Name of file to open
@@ -17,6 +19,8 @@ class File():
         - ChangeDir(), DeleteDir(), DeleteFile(), Exists(), GetCurrentDir(), ListDir(), MakeDir(), and RenameFile() are all classmethods.
     
     Note: For restricted file access, substitute File with RFile in the examples above and below.
+    
+    ---
 
     Parameters:
         - Filename - Returns (string) - name of file

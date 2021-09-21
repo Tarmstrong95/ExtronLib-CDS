@@ -2,20 +2,26 @@ class IRInterface():
     """ This class provides an interface to an IR port. This class allows the user to transmit IR data through an IR or IR/Serial port.
 
     Note: If an IR/Serial port is passed in and it has already been instantiated as an SerialInterface, an exception will be raised.
+    
+    ---
 
     Arguments:
-     Host (extronlib.device) - handle to Extron device class that instantiated this interface class
-     Port (string) - port name (e.g., 'IRS1')
-     File (string) - IR file name (e.g. 'someDevice.eir')
+        - Host (extronlib.device) - handle to Extron device class that instantiated this interface class
+        - Port (string) - port name (e.g., 'IRS1')
+        - File (string) - IR file name (e.g. 'someDevice.eir')
+    
+    ---
 
     Parameters:
-    File - Returns (string) - file name
-    Host - Returns (extronlib.device) - handle to Extron device class that instantiated this interface class
-    Port - Returns (string) - port name
+        - File - Returns (string) - file name
+        - Host - Returns (extronlib.device) - handle to Extron device class that instantiated this interface class
+        - Port - Returns (string) - port name
+    
+    ---
 
     Events:
-    Offline - (Event) Triggers when port goes offline. The callback takes two arguments. The first one is the extronlib.interface instance triggering the event and the second one is a string ('Offline').
-    Online - (Event) Triggers when port goes offline. The callback takes two arguments. The first one is the extronlib.interface instance triggering the event and the second one is a string ('Online'). 
+        - Offline - (Event) Triggers when port goes offline. The callback takes two arguments. The first one is the extronlib.interface instance triggering the event and the second one is a string ('Offline').
+        - Online - (Event) Triggers when port goes offline. The callback takes two arguments. The first one is the extronlib.interface instance triggering the event and the second one is a string ('Online'). 
     """
 
     Host = None

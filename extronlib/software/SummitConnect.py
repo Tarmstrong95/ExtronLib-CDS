@@ -7,18 +7,24 @@ class SummitConnect():
     Note: 
         - System limits 15 SummitConnect clients per system.
 
+    ---
+
     Arguments:
         - Hostname (string) - Hostname of the host computer. Can be IP Address.
         - IPPort (int) - IP Port the software is listening on (default is 5000)
     
     Note: 
         - Only one object can be instantiated for a given Hostname or IP Address.
+    
+    ---
 
     Parameters:
         - Hostname - Returns (string) - Hostname of the host computer `Note: If unavailable, returns the IP Address.`
         - IPAddress - Returns (string) - IP Address of the host computer
         - IPPort - Returns (int) - IP Port the software is listening on (default is 5000)
         - ListeningPort - Returns (int) - IP Port this SummitConnect instance is listening on for received data
+    
+    ---
 
     Events:
         - Connected (Event) Triggers when communication is established. The callback takes two arguments. The first one is the SummitConnect instance triggering the event and the second one is a string ('Connected').

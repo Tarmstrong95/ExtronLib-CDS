@@ -6,6 +6,8 @@ class Email():
     
     Note: default sender will be login username@unit-name or hostname@unit-name if there is no authentication. To override, call Sender()
     
+    ---
+
     Arguments:
         - smtpServer (string) - ip address or hostname of SMTP server
         - port (int) - port number

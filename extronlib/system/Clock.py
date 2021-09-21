@@ -7,11 +7,15 @@ class Clock():
     Note:
         - When DST causes the clock to spring forward one hour, events scheduled within the skipped hour do not fire.
         - When DST causes the clock to fall back an hour, events scheduled within the repeated hour fire twice.
+    
+    ---
 
     Arguments:
         - Times (list of strings) - list of times (e.g. 'HH:MM:SS') of day to call Function
         - Days (list of strings) - list of weekdays to set alarm. If Days is omitted, the alarm is set for every weekday
         - Function (function) - function to execute when alarm time is up
+    
+    ---
 
     Parameters:
         - Days - Returns (list of strings) - list of days to execute

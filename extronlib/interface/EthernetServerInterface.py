@@ -3,26 +3,32 @@ class EthernetServerInterface():
 
     :Warning:: This class is no longer supported. For any new development, EthernetServerInterfaceEx should be used.
     
+    ---
+
     Arguments:
-     IPPort  (int) - IP port number of the listening service.
-     (optional) Protocol  (string) - Value for either 'TCP' or 'UDP'
-     (optional) Interface  (string) - Defines the network interface on which to listen ('Any', 'LAN' of 'AVLAN')
-     (optional) ServicePort  (int) - sets the port from which the client will send data. Zero means any service port is valid.
+        - IPPort  (int) - IP port number of the listening service.
+        - (optional) Protocol  (string) - Value for either 'TCP' or 'UDP'
+        - (optional) Interface  (string) - Defines the network interface on which to listen ('Any', 'LAN' of 'AVLAN')
+        - (optional) ServicePort  (int) - sets the port from which the client will send data. Zero means any service port is valid.
 
     Note: ServicePort is only applicable to 'UDP' protocol type.
+    
+    ---
 
     Parameters:
-    Hostname - Returns (string) - Hostname DNS name of the connection. Can be the IP Address
-    IPAddress - Returns (string) - the IP Address of the connected device
-    IPPort - Returns (int) - IP Port number of the listening service
-    Interface - Returns (string) - name of interface on which the server is listening
-    Protocol - Returns (string) - Value for either ’TCP’, ’UDP’ connection.
-    ServicePort - Returns (int) - ServicePort port on which the client will listen for data
+        - Hostname - Returns (string) - Hostname DNS name of the connection. Can be the IP Address
+        - IPAddress - Returns (string) - the IP Address of the connected device
+        - IPPort - Returns (int) - IP Port number of the listening service
+        - Interface - Returns (string) - name of interface on which the server is listening
+        - Protocol - Returns (string) - Value for either ’TCP’, ’UDP’ connection.
+        - ServicePort - Returns (int) - ServicePort port on which the client will listen for data
+    
+    ---
 
     Events:
-    Connected - (Event) Triggers when socket connection is established.
-    Disconnected - (Event) Triggers when the socket connection is broken
-    ReceiveData - (Event) Receive Data event handler used for asynchronous transactions. The callback takes two arguments. The first one is the EthernetServerInterface instance triggering the event and the second one is a bytes string.
+        - Connected - (Event) Triggers when socket connection is established.
+        - Disconnected - (Event) Triggers when the socket connection is broken
+        - ReceiveData - (Event) Receive Data event handler used for asynchronous transactions. The callback takes two arguments. The first one is the EthernetServerInterface instance triggering the event and the second one is a bytes string.
     """
 
     IPPort = 0

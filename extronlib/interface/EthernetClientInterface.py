@@ -4,31 +4,30 @@ class EthernetClientInterface():
     Note: In synchronous mode, the user will use SendAndWait to wait for the response. In asynchronous mode, the user will assign a handler function to ReceiveData event handler. Then responses and unsolicited messages will be sent to the users receive data handler.
 
     Arguments:
-     Hostname (string) - DNS Name of the connection. Can be IP Address
-     IPPort (int) - IP port number of the connection
-     (optional) Protocol  (string) - Value for either 'TCP', 'UDP', or 'SSH'
-     (optional) ServicePort  (int) - Sets the port on which to listen for response data, UDP only, zero means listen on port OS assigns
-     (optional) Credentials  (tuple) - Username and password for SSH connection.
+        - Hostname (string) - DNS Name of the connection. Can be IP Address
+        - IPPort (int) - IP port number of the connection
+        - (optional) Protocol  (string) - Value for either 'TCP', 'UDP', or 'SSH'
+        - (optional) ServicePort  (int) - Sets the port on which to listen for response data, UDP only, zero means listen on port OS assigns
+        - (optional) Credentials  (tuple) - Username and password for SSH connection.
 
     Parameters:
-    Credentials - Returns (tuple, bool) - Username and password for SSH connection.
-
-        >Note:
-        > returns tuple: ('username', 'password') if provided otherwise None.
-        > only applies when protocol 'SSH' is used.
-    Hostname - Returns (string) - server Host name
-    IPAddress - Returns (string) - server IP Address
-    IPPort - Returns (int) - IP port number of the connection
-    Protocol - Returns (string) - Value for either ’TCP’, ’UDP’, 'SSH' connection.
-    ServicePort - Returns (int) - the port on which the socket is listening for response data
+        - Credentials - Returns (tuple, bool) - Username and password for SSH connection.
+            - Note:
+                - returns tuple: ('username', 'password') if provided otherwise None.
+                - only applies when protocol 'SSH' is used.
+        - Hostname - Returns (string) - server Host name
+        - IPAddress - Returns (string) - server IP Address
+        - IPPort - Returns (int) - IP port number of the connection
+        - Protocol - Returns (string) - Value for either ’TCP’, ’UDP’, 'SSH' connection.
+        - ServicePort - Returns (int) - the port on which the socket is listening for response data
 
     Events:
-    Connected - (Event) Triggers when socket connection is established.
-    Disconnected - (Event) Triggers when the socket connection is broken
-    ReceiveData - (Event) Receive Data event handler used for asynchronous transactions. The callback takes two arguments. The first one is the EthernetClientInterface instance triggering the event and the second one is a bytes string.
-        >Note:
-        > The maximum amount of data per ReceiveData event that will be passed into the handler is 1024 bytes. For payloads greater than 1024 bytes, multiple events will be triggered.
-        > When UDP protocol is used, the data will be truncated to 1024 bytes.
+        - Connected - (Event) Triggers when socket connection is established.
+        - Disconnected - (Event) Triggers when the socket connection is broken
+        - ReceiveData - (Event) Receive Data event handler used for asynchronous transactions. The callback takes two arguments. The first one is the EthernetClientInterface instance triggering the event and the second one is a bytes string.
+            - Note:
+                - The maximum amount of data per ReceiveData event that will be passed into the handler is 1024 bytes. For payloads greater than 1024 bytes, multiple events will be triggered.
+                - When UDP protocol is used, the data will be truncated to 1024 bytes.
     """
     Hostname = ''
     IPAddress = ''

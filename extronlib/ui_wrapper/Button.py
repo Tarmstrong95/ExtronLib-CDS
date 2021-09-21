@@ -7,32 +7,36 @@ class Button():
 
     A button may trigger several events depending on the configuration; however, Touch Panels only issue Pressed and Released messages to the controller. Other events (e.g., Held, Repeated) are timer driven within the Button instance.
     
+    ---
+
     Arguments:
-     UIHost (extronlib.device.UIDevice) - Device object hosting this UIObject
-     ID (int,string) - ID or Name of the UIObject
-     (optional) holdTime (float) - Time for Held event. Held event is triggered only once if the button is pressed and held beyond this time. If holdTime is given, it must be a floating point number specifying period of time in seconds of button being pressed and held to trigger Held event.
-     (optional) repeatTime (float) - Time for Repeated event. After holdTime expires, the Repeated event is triggered for every additional repeatTime of button being held. If repeatTime is given, it must be a floating point number specifying time in seconds of button being held.
+        - `UIHost` (extronlib.device.UIDevice) - Device object hosting this UIObject
+        - `ID` (int,string) - ID or Name of the UIObject
+        - (optional) `holdTime` (float) - Time for Held event. Held event is triggered only once if the button is pressed and held beyond this time. If holdTime is given, it must be a floating point number specifying period of time in seconds of button being pressed and held to trigger Held event.
+        - (optional) `repeatTime` (float) - Time for Repeated event. After holdTime expires, the Repeated event is triggered for every additional repeatTime of button being held. If repeatTime is given, it must be a floating point number specifying time in seconds of button being held.
 
     Note: If button is released before holdTime expires, a Tapped event is triggered instead of a Released event. If the button is released after holdTime expires, there will be no Tapped event.
+    
+    ---
 
     Parameters:
-    BlinkState - Returns (string) - the current blink state ('Not blinking' or 'Blinking')
-    Enabled - Returns (bool) - True if the control object is enabled else False
-    Host - Returns (extronlib.device.UIDevice) - UIDevice object that hosts this control object
-    ID - Returns (int) - the object ID
-    Name - Returns (string) - the object Name
-    PressedState - Returns (bool) - True if the button is pressed, else False
-    State - Returns (int) - the current visual state number
-    > Note: It does not return the current state if the button is blinking.
-    Visible - Returns (bool) - True if the control object is visible else False
+        - `BlinkState` - Returns (string) - the current blink state ('Not blinking' or 'Blinking')
+        - `Enabled` - Returns (bool) - True if the control object is enabled else False
+        - `Host` - Returns (extronlib.device.UIDevice) - UIDevice object that hosts this control object
+        - `ID` - Returns (int) - the object ID
+        - `Name` - Returns (string) - the object Name
+        - `PressedState` - Returns (bool) - True if the button is pressed, else False
+        - `State` - Returns (int) - the current visual state number > Note: It does not return the current state if the button is blinking.
+        - `Visible` - Returns (bool) - True if the control object is visible else False
 
+    ---
     
     Events:
-    Held - (Event) Get/Set the callback when hold expire event is triggered. The callback function must accept exactly two parameters, which are the Button that triggers the event and the state (e.g. ‘Held’).
-    Pressed - (Event) Get/Set the callback when the button is pressed. The callback function must accept exactly two parameters, which are the Button that triggers the event and the state (e.g. ‘Pressed’).
-    Released - (Event) Get/Set the callback when the button is released. The callback function must accept exactly two parameters, which are the Button that triggers the event and the state (e.g. ‘Held’).
-    Repeated - (Event) Get/Set the callback when repeat event is triggered. The callback function must accept exactly two parameters, which are the Button that triggers the event and the state (e.g. ‘Repeated’).
-    Tapped - (Event) Get/Set the callback when tap event is triggered. The callback function must accept exactly two parameters, which are the Button that triggers the event and the state (e.g. ‘Tapped’).
+        - `Held` - (Event) Get/Set the callback when hold expire event is triggered. The callback function must accept exactly two parameters, which are the Button that triggers the event and the state (e.g. ‘Held’).
+        - `Pressed` - (Event) Get/Set the callback when the button is pressed. The callback function must accept exactly two parameters, which are the Button that triggers the event and the state (e.g. ‘Pressed’).
+        - `Released` - (Event) Get/Set the callback when the button is released. The callback function must accept exactly two parameters, which are the Button that triggers the event and the state (e.g. ‘Held’).
+        - `Repeated` - (Event) Get/Set the callback when repeat event is triggered. The callback function must accept exactly two parameters, which are the Button that triggers the event and the state (e.g. ‘Repeated’).
+        - `Tapped` - (Event) Get/Set the callback when tap event is triggered. The callback function must accept exactly two parameters, which are the Button that triggers the event and the state (e.g. ‘Tapped’).
     """
     UIHost = None
     ID = 0

@@ -5,9 +5,13 @@ import device
 class Level():
     """ This module defines interfaces of Level UI.
 
+    ---
+
     Arguments:
         - UIHost (extronlib.device.UIDevice) - Device object hosting this UIObject
         - ID (int) - ID of the UIObject
+    
+    ---
 
     Parameters:
         - Host - Returns (extronlib.device.UIDevice) - UIDevice object that hosts this control object

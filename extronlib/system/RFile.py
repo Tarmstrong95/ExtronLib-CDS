@@ -4,6 +4,8 @@ from typing import Union
 class RFile():
     """ Access to restricted files. These files can only be created and accessed within the program. Files can be uploaded to provide initial values via the Global Scripter® project.
     
+    ---
+
     Arguments:
         - Filename (string) - Name of file to open
         - mode (string) - the mode in which the files is opened.
@@ -15,6 +17,8 @@ class RFile():
         - ChangeDir(), DeleteDir(), DeleteFile(), Exists(), GetCurrentDir(), ListDir(), MakeDir(), and RenameFile() are all classmethods.
     
     Note: For restricted file access, substitute File with RFile in the examples above and below.
+    
+    ---
 
     Parameters:
         - Filename - Returns (string) - name of file    

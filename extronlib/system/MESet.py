@@ -4,6 +4,8 @@ from typing import Union
 class MESet():
     """ The Mutually Exclusive set allows for the grouping of objects to allow easy selection of related items. For instance, a group of buttons could be grouped so that selecting one button deselects the others in the group.
     
+    ---
+
     Compatible extronlib classes:
         - IOInterface (and any children):
             - extronlib.interface.RelayInterface
@@ -11,15 +13,19 @@ class MESet():
             - extronlib.interface.DigitalIOInterface (Output only)
             - extronlib.interface.SWPowerInterface
         - Button:
+    
+    ---
 
     Arguments:
         - Objects (list) - list of compatible objects
-
+    
     Note:
         - Each object must have a method SetState.
         - SetState must take an integer argument.
         - Any object with a SetState function that takes an integer object is compatible with this class.
         - A programmer can create their own class and use it with MESet.
+    
+    ---
 
     Parameters:
         - Objects - Returns (list) - the list of objects to track

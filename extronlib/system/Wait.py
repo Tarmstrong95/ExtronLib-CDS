@@ -2,10 +2,14 @@ class Wait():
     """ The wait class allows the user to execute programmed actions after a desired delay without blocking other processor activity.
     
     In addition to being used as a one-shot (decorator), Wait can be named and reusable.
+    
+    ---
 
     Arguments:
         - Time (float) - Expiration time of the wait in seconds
         - Function (function) - Code to execute when Time expires
+    
+    ---
 
     Parameters:
         - Function - Returns (function) - Code to execute when Time expires.
