@@ -1,5 +1,5 @@
 import ProcessorDevice
-from typing import Optional, Union
+from typing import Callable, Optional, Union
 
 
 class eBUSDevice():
@@ -34,6 +34,85 @@ class eBUSDevice():
         - `Online` - (Event) Triggers when the device comes online. The callback takes two Parameters. The first one is the extronlib.device instance triggering the event and the second one is a string ('Online').
         - `SleepChanged` - (Event) Triggers when sleep state changes. The callback takes two Parameters. The first one is the eBUSDevice instance triggering the event and the second one is a string ('Asleep' | 'Awake').
     """
+
+
+    InactivityChanged = None
+    """
+    Event: 
+        - Triggers at times specified by SetInactivityTime() after state transition of inactivity timer.
+        - The callback takes two arguments. The first one is the eBUSDevice instance triggering the event and time with a float value of inactivity time in seconds.
+
+    ---
+
+    ```
+    PodiumPanel = eBUSDevice('Podium Panel')
+    PodiumPanel.SetInactivityTime([3000, 3600])    # Fifty minutes and One hour
+
+    @event(PodiumPanel, 'InactivityChanged')
+    def UnoccupyRoom(Panel, time):
+        if time == 3000:
+            ShowWarning()
+        else:
+            ShutdownSystem()
+    ```
+
+    Note: 
+        Applies to EBP models only.
+    """
+    SleepChanged = None
+    """
+    Event: 
+        - Triggers when sleep state changes.
+        - The callback takes two arguments. The first one is the eBUSDevice instance triggering the event and the second one is a string ('Asleep' or 'Awake').
+
+    ---
+    ```
+    @event(PodiumPanel, 'SleepChanged')
+    def HandleSleepChanged(Panel, state):
+        print('{} Sleep State Changed: {}'.format(Panel.DeviceAlias, state))
+    ```
+    """
+    LidChanged = None
+    """
+    Event: 
+        - Triggers when the Lid state changes.
+        - The callback takes two arguments. The first one is the eBUSDevice instance triggering the event and the second is the current lid state ('Opened' or 'Closed').
+    """
+    Offline = None
+    """
+    Event: 
+        - Triggers when the device goes offline.
+        - The callback takes two arguments. The first one is the extronlib.device instance triggering the event and the second one is a string ('Offline').
+    """
+    Online = None
+    """
+    Event: 
+        - Triggers when the device comes online.
+        - The callback takes two arguments. The first one is the extronlib.device instance triggering the event and the second one is a string ('Online').
+    """
+    SleepTimerEnabled: bool = False
+    DeviceAlias: str = ''
+    Host = None
+    """ Handle to the Extron ProcessorDevice to which the eBUSDevice is connected. """
+    InactivityTime: int = 0
+    """Seconds since last activity.
+    
+    Note:
+        - 0 = Active, Nonzero = Time of inactivity.
+        - Applies to EBP models only.
+    """
+    SleepState: str = ''
+    """	the current sleep state of the device ('Asleep', 'Awake')"""
+    PartNumber: str = ''
+    ModelName: str = ''
+    LidState: str = ''
+    """the current lid state ('Opened' or 'Closed')"""
+    SleepTimer: int = 0
+    """	sleep timer timeout"""
+    ID: int = 0
+    """device’s ID (set by DIP switch)"""
+
+
     def __init__(self, Host: object, DeviceAlias: str) -> None:
         """ 
         eBUSDevice class constructor.
@@ -44,84 +123,6 @@ class eBUSDevice():
             - Host (`object`) - handle to Extron ProcessorDevice to which the eBUSDevice is connected
             - DeviceAlias (`string`) - Device Alias of the Extron device
         """
-
-        self.InactivityChanged: callable = None
-        """
-        Event: 
-            - Triggers at times specified by SetInactivityTime() after state transition of inactivity timer.
-            - The callback takes two arguments. The first one is the eBUSDevice instance triggering the event and time with a float value of inactivity time in seconds.
-
-        ---
-
-        ```
-        PodiumPanel = eBUSDevice('Podium Panel')
-        PodiumPanel.SetInactivityTime([3000, 3600])    # Fifty minutes and One hour
-
-        @event(PodiumPanel, 'InactivityChanged')
-        def UnoccupyRoom(Panel, time):
-            if time == 3000:
-                ShowWarning()
-            else:
-                ShutdownSystem()
-        ```
-
-        Note: 
-            Applies to EBP models only.
-        """
-        self.SleepChanged: callable = None
-        """
-        Event: 
-            - Triggers when sleep state changes.
-            - The callback takes two arguments. The first one is the eBUSDevice instance triggering the event and the second one is a string ('Asleep' or 'Awake').
-
-        ---
-        ```
-        @event(PodiumPanel, 'SleepChanged')
-        def HandleSleepChanged(Panel, state):
-            print('{} Sleep State Changed: {}'.format(Panel.DeviceAlias, state))
-        ```
-        """
-        self.LidChanged: callable = None
-        """
-        Event: 
-            - Triggers when the Lid state changes.
-            - The callback takes two arguments. The first one is the eBUSDevice instance triggering the event and the second is the current lid state ('Opened' or 'Closed').
-        """
-        self.Offline: callable = None
-        """
-        Event: 
-            - Triggers when the device goes offline.
-            - The callback takes two arguments. The first one is the extronlib.device instance triggering the event and the second one is a string ('Offline').
-        """
-        self.Online: callable = None
-        """
-        Event: 
-            - Triggers when the device comes online.
-            - The callback takes two arguments. The first one is the extronlib.device instance triggering the event and the second one is a string ('Online').
-        """
-        self.SleepTimerEnabled: bool = False
-        self.DeviceAlias: str = DeviceAlias
-        self.Host: ProcessorDevice = Host
-        """ Handle to the Extron ProcessorDevice to which the eBUSDevice is connected. """
-        self.InactivityTime: int = 0
-        """Seconds since last activity.
-        
-        Note:
-            - 0 = Active, Nonzero = Time of inactivity.
-            - Applies to EBP models only.
-        """
-        self.SleepState: str = ''
-        """	the current sleep state of the device ('Asleep', 'Awake')"""
-        self.PartNumber: str = ''
-        self.ModelName: str = ''
-        self.LidState: str = ''
-        """the current lid state ('Opened' or 'Closed')"""
-        self.SleepTimer: int = 0
-        """	sleep timer timeout"""
-        self.ID: int = 0
-        """device’s ID (set by DIP switch)"""
-
-
 
     def Click(self, count: int=1, interval: int=None) -> None:
         """ Play default buzzer sound on applicable device
