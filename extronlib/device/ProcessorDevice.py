@@ -67,7 +67,7 @@ class ProcessorDevice():
     """
     DeviceAlias: str
     ExecutiveMode: int
-    ExecutiveModeChanged: callable
+    ExecutiveModeChanged = None
     """Event: Triggers when executive mode changes.
 
     The callback takes two arguments. The first is the extronlib.device instance triggering the event and the second is the executive mode number.
@@ -94,14 +94,14 @@ class ProcessorDevice():
         - For control processors with AV LAN, the LAN address is returned.
     """
     ModelName: str
-    Offline: callable
+    Offline = None
     """
     Event: 
         -    Triggers when the device goes offline.
 
     The callback takes two arguments. The first one is the extronlib.device instance triggering the event and the second one is a string ('Offline').
     """
-    Online: callable
+    Online = None
     """
     Event: 
         -    Triggers when the device goes online.
@@ -122,44 +122,44 @@ class ProcessorDevice():
     Example:
     ```
     {
-        -    'Network': {
-        -        'LAN': [
-        -             -   'DNSServers': ['192.168.1.1',],
-        -             -   'Gateway': '192.168.254.1',
-        -             -   'Hostname': 'ConfRoom',
-        -             -   'IPAddress': '192.168.254.250',
-        -             -   'SubnetMask': '255.255.255.0',
-        -             -   'SearchDomains': ['extron.com',],
-        -        ],
-        -        'AVLAN': [
-        -             -   'DHCPServer': 'Off',
-        -             -   'DNSServers': ['192.168.1.1',],
-        -             -   'Hostname': 'ConfRoom',
-        -             -   'IPAddress': '192.168.253.251',
-        -             -   'SubnetMask': '255.255.255.0',
-        -             -   'SearchDomains': ['extron.com',],
-        -        ],
-        -    },
-        -    'MailServer': {
-        -        'IPAddress': '192.168.254.100',
-        -        'SMTPPort': 25,
-        -        'SSLEnabled': True,
-        -        'UserID': 'jdoe',
-        -    },
-        -    'DateTime': {
-        -        'NTPSettings': {
-        -             -   'Enabled': True,
-        -             -   'Server': '192.168.254.101',    # '' if Enable == False
-        -        },
-        -        'TimeZone': '(UTC-08:00/UTC-07:00) Pacific Time',
-        -    }
-        -    'ProgramInformation': {
-        -        'Author': 'jdoe',
-        -        'DeviceName': 'IPCP Pro 550 : 192.168.254.250',
-        -        'FileLoaded': 'GS Project.gs',
-        -        'LastUpdated': '1/23/2016 9:08:29 AM',
-        -        'SoftwareVersion': '1.0.2.195',
-        -    }
+        'Network': {
+            'LAN': [
+                'DNSServers': ['192.168.1.1',],
+                'Gateway': '192.168.254.1',
+                'Hostname': 'ConfRoom',
+                'IPAddress': '192.168.254.250',
+                'SubnetMask': '255.255.255.0',
+                'SearchDomains': ['extron.com',],
+            ],
+            'AVLAN': [
+                'DHCPServer': 'Off',
+                'DNSServers': ['192.168.1.1',],
+                'Hostname': 'ConfRoom',
+                'IPAddress': '192.168.253.251',
+                'SubnetMask': '255.255.255.0',
+                'SearchDomains': ['extron.com',],
+            ],
+        },
+        'MailServer': {
+            'IPAddress': '192.168.254.100',
+            'SMTPPort': 25,
+            'SSLEnabled': True,
+            'UserID': 'jdoe',
+        },
+        'DateTime': {
+            'NTPSettings': {
+                'Enabled': True,
+                'Server': '192.168.254.101',    # '' if Enable == False
+            },
+            'TimeZone': '(UTC-08:00/UTC-07:00) Pacific Time',
+        }
+        'ProgramInformation': {
+            'Author': 'jdoe',
+            'DeviceName': 'IPCP Pro 550 : 192.168.254.250',
+            'FileLoaded': 'GS Project.gs',
+            'LastUpdated': '1/23/2016 9:08:29 AM',
+            'SoftwareVersion': '1.0.2.195',
+        }
     }
     ```
     """
@@ -169,7 +169,6 @@ class ProcessorDevice():
         ProcessorDevice class constructor.
 
         Arguments:
-
             - DeviceAlias (string) - Device Alias of the Extron device
             - PartNumber  (string) - device’s part number
         """

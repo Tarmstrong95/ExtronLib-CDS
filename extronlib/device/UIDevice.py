@@ -79,7 +79,7 @@ class UIDevice():
     AmbientLightValue: int
     AutoBrightness: bool
     Brightness: int
-    BrightnessChanged: callable
+    BrightnessChanged = None
     """
     ## Event: 
         - Triggers when LCD brightness has changed.
@@ -105,7 +105,7 @@ class UIDevice():
     """Return display timer timeout seconds"""
     DisplayTimerEnabled: bool
     FirmwareVersion: str
-    HDCPStatusChanged: callable
+    HDCPStatusChanged = None
     """
     ## Event: 
         - Triggers when HDCP Status changes.
@@ -124,7 +124,7 @@ class UIDevice():
     """
     Hostname: str
     IPAddress: str
-    InactivityChanged: callable
+    InactivityChanged = None
     """
     ## Event: 
         - Triggers at times specified by SetInactivityTime() after state transition of inactivity timer.
@@ -152,7 +152,7 @@ class UIDevice():
     Note:
         - 0 = Active, Nonzero = Time of inactivity.
     """
-    InputPresenceChanged: callable
+    InputPresenceChanged = None
     """
     ## Event: 
         - Triggers when Input Presence changes.
@@ -172,7 +172,7 @@ class UIDevice():
                 PodiumTLP.ShowPopup('No Input Available')
     ```
     """
-    LidChanged: callable
+    LidChanged = None
     """
     ## Event: 
         - Triggers when the Lid state changes.
@@ -181,7 +181,7 @@ class UIDevice():
     """
     LidState: str
     """the current lid state ('Opened' or 'Closed')"""
-    LightChanged: callable 
+    LightChanged = None
     """
     ## Event: 
         - Triggers when ambient light changes
@@ -194,7 +194,7 @@ class UIDevice():
     ModelName: str 
     MotionDecayTime: int 
     """	the period of time to trigger MotionDetected event after last motion was detected. The default (and minimum) value is 10 seconds."""
-    MotionDetected: callable 
+    MotionDetected = None
     """
     ## Event: 
         - Triggers when Motion is detected.
@@ -203,14 +203,14 @@ class UIDevice():
     """
     MotionState: str 
     """the state of the Motion sensor (e.g. Motion, No Motion)"""
-    Offline: callable 
+    Offline = None 
     """
     ## Event: 
         - Triggers when the device goes offline.
 
     The callback takes two arguments. The first one is the extronlib.device instance triggering the event and the second one is a string ('Offline').    
     """
-    Online: callable 
+    Online = None 
     """
     ## Event: 
         - Triggers when the device comes online.
@@ -219,7 +219,7 @@ class UIDevice():
     """
     PartNumber: str
     SerialNumber: str
-    SleepChanged: callable
+    SleepChanged = None
     """
     ## Event: 
         - Triggers when sleep state changes.
@@ -269,7 +269,7 @@ class UIDevice():
     print(PoduiumTLP.OverTemperature)
     ```
     """
-    OverTemperatureChanged: callable
+    OverTemperatureChanged = None
     """
     ## Event: 
         - Triggers when Over Temperature changes.
@@ -290,7 +290,7 @@ class UIDevice():
         print('Podium TLP OverTemperature is ' + str(temp))
     ```
     """
-    OverTemperatureWarning: callable
+    OverTemperatureWarning = None
     """
     ## Event: 
         - Triggers when the product’s operating temperature exceeds the maximum by 5 percent.
@@ -331,7 +331,7 @@ class UIDevice():
         print('Podium TLP is over maximum temperature.')
     ```
     """
-    OverTemperatureWarningStateChanged: callable
+    OverTemperatureWarningStateChanged = None
     """
     ## Event: 
         - Triggers when the product’s operating temperature warning changes state.
