@@ -32,7 +32,7 @@ class MESet():
     """
     Objects: list[object] = []
 
-    def __init__(self, Objects: list[object]) -> none:
+    def __init__(self, Objects: list[object]) -> None:
         """ MESet class constructor.
 
        Arguments:
