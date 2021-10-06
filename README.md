@@ -7,3 +7,4 @@ TODO:
 - Make sure types match documentation
 - Make sure all classes and methods are available
 - Make this globally installable with pip so a user doesnt have to copy pasta folders and shit
+- Make sure all versions of extronlib are supported
